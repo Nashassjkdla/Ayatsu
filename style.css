@@ -140,6 +140,8 @@ display: block;
 	overflow: hidden;
 	background:transparent;
 	transition: 1s;
+	margin-bottom:10px;
+
 }
 
 .article:hover {
