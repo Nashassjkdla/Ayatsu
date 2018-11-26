@@ -44,7 +44,7 @@ Young and creative graphic designer and illustrator.
 	</div>
 </div>
 <?php 
-
+//Cześć wojtek
 
 // Create connection
 $pdo = new PDO('mysql:host=localhost;dbname=ayatsu', 'root', '');
