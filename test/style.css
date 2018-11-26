@@ -1,0 +1,39 @@
+
+
+.content {
+	float: left;
+    position: relative;
+    width: 20%;
+	background-image: url('qr.png');
+}
+
+.img {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.button {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top:15%;
+  left:15%;
+  float: left;
+  border: 1px solid black;
+  display: block;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.content:hover .img {
+  opacity: 0.3;
+}
+
+.content:hover .button {
+  opacity: 1;
+}
