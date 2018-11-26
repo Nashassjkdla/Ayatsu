@@ -58,6 +58,7 @@ if ($result = $pdo->query($query)) {
 	$imgArr = array();
     /* fetch object array */
     while ($row = $result->fetch()) {
+		
         $imgArr[$row['Id']]['Name'] = $row['Name'];
         $imgArr[$row['Id']]['Path'] = $row['Path'];
         $imgArr[$row['Id']]['InputDate'] = $row['InputDate'];
@@ -74,26 +75,28 @@ $(function() {
 
 	$('#title').delay(500).animate({opacity: "1"});
 	$('#title').on('click',function(){
-		if ( $(this).width() >= $(window).width()*80/100)
-          $( this ).animate({ width: '20%' }, 1000 );
-    else
-          $( this ).animate({ width: '90%' }, 1000 );
-			if($('.article').length === 0){
+		if ( $(this).width() >= $(window).width()*80/100) {
+			$( this ).animate({ width: '20%' }, 1000 );
+		} else {
+			$( this ).animate({ width: '90%' }, 1000 );
+		}
+		if($('.article').length === 0){
 			setTimeout(loadGallery,600);
-			}
+	}
 		});
 	
 });
+
 function loadGallery(){
 	var imgArr = <?= json_encode($imgArr) ?>;
 	
-	$.each(imgArr,function(e){
+	$.each(imgArr,function(idx,obj){
 		
 		var article = '<div class="article">';
-		var img = '<img src="'+imgArr[e]['Path']+'" id="'+imgArr[e]['Name']+'" class="colImg lazyload">';
+		var img = '<img src="'+obj['Path']+'" id="'+obj['Name']+'" class="colImg lazyload">';
 		var buttons = '';
-		buttons += '<div class="button button_name">'+imgArr[e]['Name']+'</div>';
-		//buttons += '<div class="button button_date">'+imgArr[e]['InputDate']+'</div>';
+		buttons += '<div class="button button_name">'+obj['Name']+'</div>';
+		//buttons += '<div class="button button_date">'+obj['InputDate']+'</div>';
 		article += img+buttons+'</div>';
 		$('#col_'+colId).append(article);
 		

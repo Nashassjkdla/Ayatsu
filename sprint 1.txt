@@ -1,0 +1,19 @@
+TODO:
+-Ekrany:
+	-logowanie
+	-dodawanie artykulów:
+		-zdjęć
+		-tekst
+	-wyświetlanie:
+		-artykulów
+		-zdjęć
+	-strona główna:
+		-ograniczenie obrazów
+		-ogarnąć jak to ma kurwa ostatecznie wyglądać:
+			-consider ajax
+		
+-Przechowywanie zdjęć
+-Struktura bazy
+
+-wyjebać połączenie do osobmnego pliku
+-kupić browary +
