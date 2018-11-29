@@ -1,10 +1,11 @@
 <html>
 <head>
     <?php
-    require_once('base.php');
+    require_once('../base.php');
     ?>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="../style.css">
 <script src="jquery-3.3.1.min"></script>
+<script src="jquery.lazyload.js"></script>
 </head>
 <body>
 <div id="content">
@@ -44,12 +45,13 @@ Young and creative graphic designer and illustrator.
 	
 	</div>
 	</div>
-</div>\
+</div>
 
 
 
 <?php
-require_once(__ROOT__ . '/connect.php');
+
+  require_once(__ROOT__ .'/connect.php');
 
 
 $query = "SELECT Id, Name, Path, InputDate FROM Img";
@@ -94,7 +96,7 @@ function loadGallery(){
 	$.each(imgArr,function(idx,obj){
 		
 		var article = '<div class="article">';
-		var img = '<img src="'+obj['Path']+'" id="'+obj['Name']+'" class="colImg">';
+		var img = '<img src="'+obj['Path']+'" id="'+obj['Name']+'" class="colImg lazyload">';
 		var buttons = '';
 		buttons += '<div class="button button_name">'+obj['Name']+'</div>';
 		//buttons += '<div class="button button_date">'+obj['InputDate']+'</div>';

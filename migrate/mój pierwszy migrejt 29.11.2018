@@ -1,0 +1,37 @@
+CREATE DATABASE ayatsu_dev;
+USE ayatsu_dev;
+CREATE TABLE Users (
+	ID int NOT NULL AUTO_INCREMENT,
+    login varchar(255) NOT NULL,
+    password varchar(255) NOT NULL,
+	PRIMARY KEY (ID)
+);
+
+CREATE TABLE Conf (
+	ID int NOT NULL AUTO_INCREMENT,
+	value varchar(255) NOT NULL,
+    name varchar(255) NOT NULL,
+	PRIMARY KEY (ID)
+);
+
+CREATE TABLE Article (
+	ID int NOT NULL AUTO_INCREMENT,
+	name varchar(255) NOT NULL,
+    inpuDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+    modificationDate DATETIME ON UPDATE CURRENT_TIMESTAMP,
+	notes text,
+	PRIMARY KEY (ID)
+);
+
+CREATE TABLE Img (
+	ID int NOT NULL AUTO_INCREMENT,
+	name varchar(255) NOT NULL,
+    inputDate DATETIME DEFAULT CURRENT_TIMESTAMP,
+	modificationDate DATETIME ON UPDATE CURRENT_TIMESTAMP,
+	path varchar(255) NOT NULL,
+	articleID int NOT NULL,
+	notes text,
+	PRIMARY KEY (ID),
+	FOREIGN KEY (articleID) REFERENCES Article(ID)
+);
+
