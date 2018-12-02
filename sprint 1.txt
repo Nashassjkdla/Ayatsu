@@ -17,3 +17,7 @@ TODO:
 
 -wyjebać połączenie do osobmnego pliku
 -kupić browary +
+-pobieranie obrazkow - block
+
+-hp logo fadeout -onclick, onscroll, setinterval
+-hp logo, mniejsze
