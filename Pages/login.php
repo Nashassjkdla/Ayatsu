@@ -11,9 +11,11 @@
 <div id="content2">
 	  <div id="loginblock">
 	<img src="../title.png" id="titlelogin" class="center">
+        <form action="logging.php" method="post" id="form1">
         <input type="text" class="inputs" placeholder="Username" name="username">
         <input type="password" class="inputs" placeholder="Password" name="pass">
-        <button onclick="" type="button" id="loginbutton"><span>Log in</span></button>
+        </form>
+        <button onclick="" form="form1" type="submit" id="loginbutton"><span>Log in</span></button>
 	</div>
 </div>
 
@@ -24,7 +26,7 @@
   require_once(__ROOT__ .'/connect.php');
 
 
-phpinfo();
+
 
 ?>
 
