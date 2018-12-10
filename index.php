@@ -74,19 +74,21 @@
             $(function () {
 
                 $('#title').delay(500).animate({opacity: "1"});
-                $('#title').on('click', function () {
-                    if ($(this).width() >= $(window).width() * 80 / 100) {
-                        $(this).animate({width: '20%'}, 1000);
-                    } else {
-                        $(this).animate({width: '90%'}, 1000);
-                    }
-                    if ($('.article').length === 0) {
-                        setTimeout(loadGallery, 600);
-                    }
-                });
+
+                $('#title').on('click', startPage);
+                setTimeout(startPage, 3000);
 
             });
+            function startPage() {
+                if ($('#title').width() >= $(window).width() * 80 / 100) {
+                    $('#title').animate({width: '20%'}, 1000);
+                }
 
+                if ($('.article').length === 0) {
+                    setTimeout(loadGallery, 600);
+                }
+
+            }
             function loadGallery() {
                 var imgArr = <?= json_encode($imgArr) ?>;
 
@@ -100,7 +102,7 @@
                     $('#col_' + colId).append(article);
 
                     if (colId === 6) {
-                        return;
+                        colId = 1;
                     } else {
                         colId++;
                     }
