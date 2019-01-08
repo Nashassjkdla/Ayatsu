@@ -10,7 +10,9 @@
     <body>
         <div id="content2">
             <div id="loginblock">
+                <a href='../index.php'>
                 <img src="../title.png" id="titlelogin" class="center">
+                </a>
                 <form action="insertimg.php" method="post" id="form1" enctype="multipart/form-data">
                     <input type="text" class="inputs" placeholder="Name" name="name">
                     <input type="text" class="inputs" placeholder="Notes" name="notes">

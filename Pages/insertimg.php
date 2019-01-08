@@ -40,7 +40,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["file"]["size"] > 500000) {
+if ($_FILES["file"]["size"] > 9000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
@@ -55,7 +55,7 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        $pdo->query("INSERT INTO img(name, path, articleID, notes) VALUES ('$name','$target_file_sql',1,'$notes')") or die(mysql_error());
+        $pdo->query("INSERT INTO img(name, path, articleID, notes) VALUES ('$name','$target_file_sql',1,'$notes')") or print_r($pdo->errorInfo());
         echo "The file " . basename($_FILES["file"]["name"]) . " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";

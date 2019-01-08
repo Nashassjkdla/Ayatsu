@@ -7,6 +7,13 @@
         <script src="jquery-3.3.1.min"></script>
     </head>
     <body>
+        <div id="saMenu">
+            <nav id="saLinks">
+                <li><a href='Pages/addarticle.php' class="authReq">ADD ARTICLE</a></li>
+                <li><a href='Pages/upload.php' class="authReq">UPLOAD FILE</a></li>
+                <li><a href='Pages/login.php'>LOGIN</a></li>
+            </nav>
+        </div>
         <div id="content">
 
             <img src="title.png" id="title" class="center">
@@ -76,10 +83,11 @@
                 $('#title').delay(500).animate({opacity: "1"});
 
                 $('#title').on('click', startPage);
-                setTimeout(startPage, 3000);
+                //setTimeout(startPage, 3000);
 
             });
             function startPage() {
+                setTimeout(loadMenu, 1100);
                 if ($('#title').width() >= $(window).width() * 80 / 100) {
                     $('#title').animate({width: '20%'}, 1000);
                 }
@@ -89,6 +97,13 @@
                 }
 
             }
+
+            function loadMenu() {
+                $('#menuDiv').animate({opacity: "1"});
+                $('#saMenu').animate({opacity: "1"});
+
+            }
+
             function loadGallery() {
                 var imgArr = <?= json_encode($imgArr) ?>;
 
