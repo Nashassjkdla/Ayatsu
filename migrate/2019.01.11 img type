@@ -1,0 +1,13 @@
+CREATE TABLE ImgType (
+	ID int NOT NULL AUTO_INCREMENT,
+name varchar(255) NOT NULL,
+	PRIMARY KEY (ID)
+);
+
+INSERT INTO ImgType (ID, name) values (1,'undefined');
+
+ALTER TABLE Img ADD ImgTypeId INT DEFAULT 1;
+
+ALTER TABLE Img
+ADD FOREIGN KEY (ImgTypeId) 
+REFERENCES ImgType(ID);

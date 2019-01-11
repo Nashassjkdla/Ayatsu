@@ -4,7 +4,8 @@ require_once('../base.php');
 require_once(__ROOT__ . '/pages/connect.php');
 
 $name = $_POST['name'];
-$query = 'SELECT 1 from img where name ="' . $name . '"';
+$articleId = $_POST['articleId'];
+$query = 'SELECT 1 from img where name ="' . $name . '" and articleId = ' . $articleId . '';
 
 if ($result = $pdo->query($query)) {
 
@@ -18,7 +19,9 @@ if ($result = $pdo->query($query)) {
 
 $notes = $_POST['notes'];
 // upload file
-$target_file_sql = './gallery/' . basename($_FILES["file"]["name"]);
+$path = './gallery/' . $articleId;
+
+$target_file_sql = $path . '/' . basename($_FILES["file"]["name"]);
 $target_file = '.' . $target_file_sql;
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
@@ -40,7 +43,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["file"]["size"] > 9000000) {
+if ($_FILES["file"]["size"] > 900000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
@@ -54,8 +57,12 @@ if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
+    if (!file_exists('.' . $path)) {
+        mkdir('.' . $path, 0700, true);
+    }
+
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-        $pdo->query("INSERT INTO img(name, path, articleID, notes) VALUES ('$name','$target_file_sql',1,'$notes')") or print_r($pdo->errorInfo());
+        $pdo->query("INSERT INTO img(name, path, articleID, notes) VALUES ('$name','$target_file_sql','$articleId','$notes')") or print_r($pdo->errorInfo());
         echo "The file " . basename($_FILES["file"]["name"]) . " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
@@ -64,3 +71,5 @@ if ($uploadOk == 0) {
 
 // close connection
 ftp_close($ftp_conn);
+
+
